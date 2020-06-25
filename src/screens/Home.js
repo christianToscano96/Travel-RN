@@ -11,6 +11,7 @@ import {
   FlatList,
   TextInput,
 } from 'react-native';
+import Icon from 'react-native-ionicons';
 
 const Home = () => {
   const image = {
@@ -33,6 +34,19 @@ const Home = () => {
               style={styles.searchBox}
               placeholder="Busca tu destino"
               placeholderTextColor="#666"
+            />
+            <Icon name="search" style={styles.iconSearch} />
+            <Icon
+              name="menu"
+              size={26}
+              color={'#fff'}
+              style={{position: 'absolute', top: -120, left: 16}}
+            />
+            <Icon
+              name="notifications-outline"
+              size={26}
+              color={'#fff'}
+              style={{position: 'absolute', top: -120, right: 30}}
             />
           </View>
         </ImageBackground>
@@ -59,11 +73,11 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 65,
   },
   searchContainer: {
-    paddingTop: 100,
+    paddingTop: 120,
     paddingLeft: 16,
   },
   userGreet: {
-    marginTop: 50,
+    marginTop: 70,
     paddingLeft: 15,
     paddingRight: 10,
     backgroundColor: '#DB810C',
@@ -86,6 +100,14 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     borderBottomRightRadius: 40,
     width: '90%',
+  },
+  iconSearch: {
+    color: '#666',
+    fontSize: 24,
+    position: 'absolute',
+    top: 30,
+    right: 60,
+    opacity: 0.6,
   },
 });
 
