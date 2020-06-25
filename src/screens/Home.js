@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-ionicons';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const image = {
     uri: 'https://injujuy.info/uploads/jujuy-turismo-interna-1.jpg',
   };
@@ -52,6 +52,10 @@ const Home = () => {
       key: '4',
     },
   ]);
+
+  const goToDetails = () => {
+    navigation.navigate('PostDetails');
+  };
 
   return (
     <View style={{flexGrow: 1, height: '100%'}}>
@@ -98,7 +102,7 @@ const Home = () => {
             horizontal={true}
             renderItem={({item}) => {
               return (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={goToDetails}>
                   <Image
                     source={item.image}
                     style={{
@@ -121,7 +125,7 @@ const Home = () => {
             }}
           />
         </View>
-        <View>
+        <View style={{marginBottom: 60}}>
           <View
             style={{
               padding: 20,
@@ -144,10 +148,30 @@ const Home = () => {
               alignSelf: 'center',
             }}
           />
-          <View>
-            <View>
-              <Icon />
+          <View style={{position: 'absolute', bottom: 0, padding: 16}}>
+            <View style={{flexDirection: 'row'}}>
+              <Icon
+                name="heart"
+                color="white"
+                size={22}
+                style={{marginLeft: 10, position: 'relative', top: 4}}
+              />
+              <Text
+                style={{fontSize: 22, color: 'white', fontWeight: 'normal', marginBottom: 10, marginHorizontal: 10}}>
+                Carnaval de Humahuaca
+              </Text>
             </View>
+            <Text
+              style={{
+                fontSize: 14,
+                color: 'white',
+                fontWeight: 'normal',
+                marginBottom: 4,
+                marginLeft: 16,
+              }}>
+              Veni a descubris los lugares donde podras disfrutar del Gran
+              Carnaval Norteño
+            </Text>
           </View>
         </View>
       </ScrollView>
@@ -180,7 +204,7 @@ const styles = StyleSheet.create({
     marginTop: 70,
     paddingLeft: 15,
     paddingRight: 10,
-    backgroundColor: '#DB810C',
+    backgroundColor: '#ff6200',
     position: 'absolute',
     fontSize: 36,
     fontWeight: 'bold',
@@ -191,6 +215,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'normal',
     color: 'white',
+    marginTop: 10,
   },
   searchBox: {
     marginTop: 16,
@@ -216,7 +241,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     position: 'absolute',
     backgroundColor: '#000',
-    opacity: 0.3,
+    opacity: 0.4,
   },
   imageLocationIcons: {
     position: 'absolute',
