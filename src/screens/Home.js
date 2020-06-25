@@ -17,7 +17,10 @@ const Home = () => {
   const image = {
     uri: 'https://injujuy.info/uploads/jujuy-turismo-interna-1.jpg',
   };
-
+  const recentImage = {
+    uri:
+      'https://www.tucumanalas7.com.ar/u/fotografias/m/2018/2/15/f608x342-75143_104866_13.jpg',
+  };
   const [gallery, setgallery] = useState([
     {
       image: {
@@ -51,7 +54,7 @@ const Home = () => {
   ]);
 
   return (
-    <View>
+    <View style={{flexGrow: 1, height: '100%'}}>
       <View>
         <ImageBackground
           source={image}
@@ -83,42 +86,71 @@ const Home = () => {
             />
           </View>
         </ImageBackground>
-
-        <ScrollView>
-          <View style={{padding: 20}}>
-            <Text style={{fontSize: 22, fontWeight: 'bold'}}>Top Trending</Text>
-          </View>
-          <View style={{paddingVertical: 20, paddingLeft: 16}}>
-            <FlatList
-              data={gallery}
-              horizontal={true}
-              renderItem={({item}) => {
-                return (
-                  <TouchableOpacity>
-                    <Image
-                      source={item.image}
-                      style={{
-                        width: 150,
-                        height: 250,
-                        marginRight: 8,
-                        borderRadius: 10,
-                      }}
-                    />
-                    <View style={styles.imageOverlay} />
-                    <Icon
-                      name="heart"
-                      size={18}
-                      color="white"
-                      style={styles.imageLocationIcons}
-                    />
-                    <Text style={styles.imageText}>{item.title}</Text>
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </View>
-        </ScrollView>
       </View>
+
+      <ScrollView>
+        <View style={{padding: 20}}>
+          <Text style={{fontSize: 22, fontWeight: 'bold'}}>Top Lugares</Text>
+        </View>
+        <View style={{paddingVertical: 20, paddingLeft: 16}}>
+          <FlatList
+            data={gallery}
+            horizontal={true}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity>
+                  <Image
+                    source={item.image}
+                    style={{
+                      width: 150,
+                      height: 250,
+                      marginRight: 8,
+                      borderRadius: 10,
+                    }}
+                  />
+                  <View style={styles.imageOverlay} />
+                  <Icon
+                    name="heart"
+                    size={18}
+                    color="white"
+                    style={styles.imageLocationIcons}
+                  />
+                  <Text style={styles.imageText}>{item.title}</Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+        <View>
+          <View
+            style={{
+              padding: 20,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Text style={{fontSize: 22, fontWeight: 'bold'}}>
+              Lugares de Encuentro
+            </Text>
+            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#ff6200'}}>
+              Ver todos
+            </Text>
+          </View>
+          <Image
+            source={recentImage}
+            style={{
+              width: '92%',
+              height: 250,
+              borderRadius: 10,
+              alignSelf: 'center',
+            }}
+          />
+          <View>
+            <View>
+              <Icon />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
